@@ -9,8 +9,8 @@
     body {
       margin: 0;
       font-family: "Segoe UI", system-ui, sans-serif;
-      background: #0a1a33; /* deep navy */
-      color: #e6f0ff;      /* soft light blue */
+      background: #0a1a33;
+      color: #e6f0ff;
     }
 
     .header {
@@ -42,17 +42,16 @@
 
     .pdf-tile {
       width: 150px;
-      height: 150px;
+      height: 190px;
       background: #11264d;
       border: 5px solid #00a3e0;
       border-radius: 0.6rem;
+      text-decoration: none;
+      color: #e6f0ff;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #e6f0ff;
-      text-decoration: none;
       transition: 0.25s;
     }
 
@@ -60,6 +59,26 @@
       background: #00a3e0;
       color: #0a1a33;
       transform: scale(1.07);
+    }
+
+    .pdf-icon {
+      width: 60px;
+      height: 75px;
+      background: #e6f0ff;
+      border-radius: 4px;
+      margin-bottom: 0.8rem;
+      position: relative;
+    }
+
+    .pdf-icon::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 22px;
+      height: 22px;
+      background: #00a3e0;
+      border-bottom-left-radius: 4px;
     }
 
     .footer {
@@ -77,13 +96,24 @@
 
   <div class="header">
     <h1>Diagram PDF Portal</h1>
-    <p>Access the operational diagram PDFs for roster viewing and calendar integration.</p>
+    <p>A dedicated PDF portal for viewing roster diagrams.</p>
   </div>
 
   <div class="grid">
-    <a class="pdf-tile" href="pdfs/SO.pdf">SO</a>
-    <a class="pdf-tile" href="pdfs/SU.pdf">SU</a>
-    <a class="pdf-tile" href="pdfs/SX.pdf">SX</a>
+    <a class="pdf-tile" href="pdfs/LD CONS SO.pdf">
+      <div class="pdf-icon"></div>
+      SO
+    </a>
+
+    <a class="pdf-tile" href="pdfs/LD CONS SU.pdf">
+      <div class="pdf-icon"></div>
+      SU
+    </a>
+
+    <a class="pdf-tile" href="pdfs/LD CONS SX.pdf">
+      <div class="pdf-icon"></div>
+      SX
+    </a>
   </div>
 
   <div class="footer">
@@ -92,4 +122,3 @@
 
 </body>
 </html>
-
