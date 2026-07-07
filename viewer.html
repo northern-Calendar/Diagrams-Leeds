@@ -3,123 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Diagram PDF Portal</title>
+<title>PDF Viewer</title>
 
 <style>
   body {
     margin: 0;
-    font-family: "Segoe UI", system-ui, sans-serif;
     background: #0a1a33;
     color: #e6f0ff;
+    font-family: "Segoe UI", system-ui, sans-serif;
   }
 
-  .header {
-    text-align: center;
-    padding: 2.5rem 1rem;
+  .top-bar {
     background: #11264d;
-    border-bottom: 6px solid #00a3e0;
-  }
-
-  .header h1 {
-    margin: 0;
-    font-size: 2.4rem;
-    color: #00a3e0;
-  }
-
-  .header p {
-    margin-top: 1rem;
-    font-size: 1.2rem;
-    color: #d0e0ff;
-  }
-
-  .grid {
+    padding: 1rem;
     display: flex;
-    justify-content: center;
-    gap: 2rem;
-    padding: 3rem 1rem;
-    flex-wrap: wrap;
-  }
-
-  .pdf-tile {
-    width: 150px;
-    height: 190px;
-    background: #11264d;
-    border: 5px solid #00a3e0;
-    border-radius: 0.6rem;
-    text-decoration: none;
-    color: #e6f0ff;
-    display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    transition: 0.25s;
+    border-bottom: 4px solid #00a3e0;
   }
 
-  .pdf-tile:hover {
+  .back-btn {
     background: #00a3e0;
     color: #0a1a33;
-    transform: scale(1.07);
+    padding: 0.6rem 1rem;
+    border-radius: 0.3rem;
+    text-decoration: none;
+    font-weight: bold;
   }
 
-  .pdf-icon {
-    width: 60px;
-    height: 75px;
-    background: #e6f0ff;
-    border-radius: 4px;
-    margin-bottom: 0.8rem;
-    position: relative;
+  .back-btn:hover {
+    background: #4dc9ff;
   }
 
-  .pdf-icon::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 22px;
-    height: 22px;
-    background: #00a3e0;
-    border-bottom-left-radius: 4px;
-  }
-
-  .footer {
-    text-align: center;
-    padding: 1.5rem;
-    font-size: 0.95rem;
-    color: #b8c7e0;
-    border-top: 4px solid #11264d;
-    margin-top: 2rem;
+  iframe {
+    width: 100%;
+    height: calc(100vh - 70px);
+    border: none;
   }
 </style>
 </head>
 
 <body>
 
-<div class="header">
-  <h1>Diagram PDF Portal</h1>
-  <p>A dedicated PDF portal for viewing roster diagrams.</p>
+<div class="top-bar">
+  <div id="pdfName">PDF Viewer</div>
+  <a class="back-btn" href="../index.html">Back</a>
 </div>
 
-<div class="grid">
-  <a class="pdf-tile" href="views/viewer.html?file=LD%20CONS%20SO.pdf">
-    <div class="pdf-icon"></div>
-    SO
-  </a>
+<iframe id="pdfFrame"></iframe>
 
-  <a class="pdf-tile" href="views/viewer.html?file=LD%20CONS%20SU.pdf">
-    <div class="pdf-icon"></div>
-    SU
-  </a>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const file = params.get("file");
 
-  <a class="pdf-tile" href="views/viewer.html?file=LD%20CONS%20SX.pdf">
-    <div class="pdf-icon"></div>
-    SX
-  </a>
-</div>
+  const decoded = decodeURIComponent(file);
+  const encoded = encodeURIComponent(decoded);
 
-<div class="footer">
-  Designed & Maintained by Antony Jameson — Roster Project
-</div>
+  document.getElementById("pdfName").textContent = decoded;
+  document.getElementById("pdfFrame").src = "../" + encoded;
+</script>
 
 </body>
 </html>
-
