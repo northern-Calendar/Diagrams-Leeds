@@ -99,18 +99,26 @@
   <p>A dedicated PDF portal for viewing roster diagrams.</p>
 </div>
 
-<div class="grid" id="pdfGrid">
-  <!-- Auto‑generated PDF tiles appear here -->
+<div class="grid">
+  <a class="pdf-tile" href="views/viewer.html?file=LD%20CONS%20SO.pdf">
+    <div class="pdf-icon"></div>
+    SO
+  </a>
+
+  <a class="pdf-tile" href="views/viewer.html?file=LD%20CONS%20SU.pdf">
+    <div class="pdf-icon"></div>
+    SU
+  </a>
+
+  <a class="pdf-tile" href="views/viewer.html?file=LD%20CONS%20SX.pdf">
+    <div class="pdf-icon"></div>
+    SX
+  </a>
 </div>
 
 <div class="footer">
   Designed & Maintained by Antony Jameson — Roster Project
 </div>
 
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const file = params.get("file");
-
-  document.getElementById("pdfName").textContent = decodeURIComponent(file);
-  document.getElementById("pdfFrame").src = "../" + file;
-</script>
+</body>
+</html>
