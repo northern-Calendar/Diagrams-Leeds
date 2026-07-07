@@ -1,55 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Leeds Diagrams</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDF Viewer</title>
 
-  <style>
-    body {
-      margin: 0;
-      background: #0a1a33;
-      color: #e6f0ff;
-      font-family: "Segoe UI", system-ui, sans-serif;
-    }
+<style>
+  body {
+    margin: 0;
+    background: #0a1a33;
+    color: #e6f0ff;
+    font-family: "Segoe UI", system-ui, sans-serif;
+  }
 
-    .top-bar {
-      background: #11264d;
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 4px solid #00a3e0;
-    }
+  .top-bar {
+    background: #11264d;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid #00a3e0;
+  }
 
-    .back-btn {
-      background: #00a3e0;
-      color: #0a1a33;
-      padding: 0.6rem 1rem;
-      border-radius: 0.3rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
+  .back-btn {
+    background: #00a3e0;
+    color: #0a1a33;
+    padding: 0.6rem 1rem;
+    border-radius: 0.3rem;
+    text-decoration: none;
+    font-weight: bold;
+  }
 
-    .back-btn:hover {
-      background: #4dc9ff;
-    }
+  .back-btn:hover {
+    background: #4dc9ff;
+  }
 
-    iframe {
-      width: 100%;
-      height: calc(100vh - 70px);
-      border: none;
-    }
-  </style>
+  iframe {
+    width: 100%;
+    height: calc(100vh - 70px);
+    border: none;
+  }
+</style>
 </head>
 
 <body>
-  <div class="top-bar">
-    <div>Leeds Diagrams</div>
-    <a class="back-btn" href="../index.html">Back to Main Page</a>
-  </div>
 
-  <iframe src="../pdfs/Leeds-Diagrams.pdf"></iframe>
+<div class="top-bar">
+  <div id="pdfName">PDF Viewer</div>
+  <a class="back-btn" href="../index.html">Back</a>
+</div>
+
+<iframe id="pdfFrame"></iframe>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const file = params.get("file");
+
+  document.getElementById("pdfName").textContent = decodeURIComponent(file);
+  document.getElementById("pdfFrame").src = "../" + file;
+</script>
+
 </body>
 </html>
-
