@@ -108,14 +108,9 @@
 </div>
 
 <script>
-async function loadPDFs() {
-  const response = await fetch("pdfs/");
-  const text = await response.text();
+  const params = new URLSearchParams(window.location.search);
+  const file = params.get("file");
 
-  const pdfGrid = document.getElementById("pdfGrid");
-
-  // Regex to detect PDF filenames in the folder listing
-  const pdfs = [...text.matchAll(/href="([^"]+\.pdf)"/g)].map(m => m[1]);
-
-  pdfs.forEach(pdf => {
-    const name = pdf.replace
+  document.getElementById("pdfName").textContent = decodeURIComponent(file);
+  document.getElementById("pdfFrame").src = "../" + file;
+</script>
